@@ -1,0 +1,6 @@
+#post{
+    width: 400px;   /* Makes the input wider */
+    height: 50px;   /* Makes the input taller */
+    font-size: 18px; /* Increases text size */
+    padding: 10px;  /* Adds space inside the box */
+}

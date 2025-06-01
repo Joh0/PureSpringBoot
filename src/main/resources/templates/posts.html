@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Posts</title>
+</head>
+<body>
+
+    <h1><span th:text="${session.user} + '\'s posts'"></span></h1>
+    
+    <!-- Iterate through the list of posts -->
+    <div th:if="${postsList != null}">
+        <div th:each="post : ${postsList}">
+            <table>
+                <tr>
+                    <th th:text="${post.title}">Post Title</th>
+                </tr>
+                <tr>
+                    <td th:text="${post.content}">Post Content</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- If there are no posts -->
+    <div th:if="${postsList == null or #lists.isEmpty(postsList)}">
+        <p>No posts available.</p>
+    </div>
+	<h3>Back to <a href="/">Home Page</a></h3>
+</body>
+</html>

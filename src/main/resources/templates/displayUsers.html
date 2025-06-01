@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <div th:if="${userList != null}">
+        <div th:each="user : ${userList}">
+        	<p><strong>Username: </strong><span th:text="${user.username}"></span></p>
+        	<p><strong>Email: </strong><span th:text="${user.email}"></span></p>
+        	<form th:action="@{/post/othersPostsPage}" method="get">
+		    	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+		    	<input type="hidden" th:name=username th:value="${user.username}">
+		    	<button type="submit"><span th:text="'See ' + ${user.username} + '\'s posts'"></span></button>
+    		</form>
+        </div>
+    </div>
+    <div th:if="${userList == null}">
+    	<p>There are no other users in Tweeter :(
+    </div>
+
+    
+    <h3>Back to <a href="/">Home Page</a></h3>
+</body>
+</html>

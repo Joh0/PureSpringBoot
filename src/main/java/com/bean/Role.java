@@ -12,21 +12,21 @@ public class Role {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
 
     // Many-to-Many with User (Many Users can have Many Roles)
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-	public Role(Long id, String name, Set<User> users) {
+	public Role(Long id, RoleType roleType, Set<User> users) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.roleType = roleType;
 		this.users = users;
 	}
 
 	public Role() {
-		super();
 	}
 
 	public Long getId() {
@@ -37,12 +37,12 @@ public class Role {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public RoleType getRoleType() {
+		return roleType;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setRoleType(RoleType roleType) {
+		this.roleType = roleType;
 	}
 
 	public Set<User> getUsers() {
@@ -52,6 +52,8 @@ public class Role {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+    
+	
     
     
     

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tweeter</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+
+    <!-- JavaScript Redirect (Executed Immediately) -->
+    <script th:if="${session.user == null}">
+        window.location.href = '/user/loginPage';
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Tweeter</th>
+            <th><a href="/post/postsPage">Your Posts</a></th>
+            <th><a href="/post/createPostPage">Create Post</a></th>
+            <th><a href="/user/displayUsersPage">Explore Page</a></th>
+            <th><a href="/profile/profilePage">See Your Profile</a></th>
+            <th><a href="/user/loginPage">Login</a></th>
+            <th><a href="/user/registerUserPage">Register</a></th>
+            <th><a href="/user/logout">Logout</a></th>
+        </tr>
+    </table>
+
+    <div th:if="${session.user}">
+        <h1>Welcome, <span th:text="${session.user}"></span>!</h1>
+    </div>
+</body>
+</html>

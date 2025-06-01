@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Profile</title>
+</head>
+<body>
+<form th:action="@{/profile/editProfile}" th:object="${profile}" method="post">
+	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+	<input type="hidden" th:field="*{id}" />
+
+    <label>Username:</label>
+    <input type="text" th:value="${session.user}" readonly/>
+    <br><br>
+    <label>Bio:</label>
+    <textarea th:field="*{bio}" required></textarea>
+    <br><br>
+
+    <label>Age:</label>
+    <input type="number" th:field="*{age}" required/>
+    <br><br>
+
+    <label>Gender:</label>
+    <select th:field="*{gender}" required>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <option value="OTHER">Other</option>
+    </select>
+    <br><br>
+    <button type="submit">Save Changes</button>
+</form>
+<br><br>
+<!-- Cancel Button -->
+<a href="/profile/profilePage">Cancel</a>
+</form>
+</body>
+</html>
